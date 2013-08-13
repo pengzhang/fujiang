@@ -72,21 +72,6 @@ body {
 }
 
 /* Customize the navbar links to be fill the entire space of the .navbar */
-.navbar .navbar-inner {
-    padding: 0;
-}
-
-.navbar .nav {
-    margin: 0;
-    display: table;
-    width: 100%;
-}
-
-.navbar .nav li {
-    display: table-cell;
-    width: 1%;
-    float: none;
-}
 
 .navbar .nav li a {
     font-weight: bold;
@@ -108,6 +93,11 @@ body {
 .font18{
     font-size: 25px;
     line-height:20px;
+}
+
+.img-small{
+	width: 200px;
+	height: 50px;
 }
 
 

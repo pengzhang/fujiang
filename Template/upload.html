@@ -88,30 +88,14 @@
 
     <!-- Example row of columns -->
     <div class="row-fluid">
-        <div class="span12 sider">
-
-                <form>
-                    <div class="span8 offset2 sider">
-                    <table class="table">
-                        <caption><h2 class="muted">第一题</h2> </caption>
-                        <tr>
-                            <td colspan="8"><h3 class="text-warning">北京的夜晚有多少星星?</h3></td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" value="A"> A dfdf</td>
-                            <td><input type="radio" value="A"> B dfdf</td>
-                            <td><input type="radio" value="A"> C dfdf</td>
-                            <td><input type="radio" value="A"> D dfdf</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"><div class="alert">正确答案 : D</div> </td>
-                        </tr>
-                    </table>
-                    <div class="text-center">
-                        <button class="btn btn-large btn-primary">下一题</button>
-                    </div>
-                    </div>
-                </form>
+        <div class="span12  sider">
+            <form class="form-signin max-width300" enctype="multipart/form-data">
+                <h2 class="form-signin-heading">上传图片</h2>
+                <input type="text" class="input-block-level" name="title" placeholder="标题">
+                <input type="text" class="input-block-level" name="desc" placeholder="描述">
+                选择上传的图片:<input type="file" style="margin-bottom: 10px;" name="picture">
+                <button class="btn btn-large btn-primary" type="submit">上传</button>
+            </form>
 
 
         </div>

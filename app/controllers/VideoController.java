@@ -7,6 +7,7 @@ import models.Video;
 import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.*;
 
 public class VideoController extends Controller {
 
@@ -18,6 +19,10 @@ public class VideoController extends Controller {
 		}
 		//TODO 跳转video更新页面
 		return ok();
+	}
+	
+	public static Result upload_video(){
+		return ok(upload_video.render());
 	}
 	
 	public static Result create_video(){

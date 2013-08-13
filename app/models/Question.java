@@ -51,6 +51,10 @@ public class Question extends Model{
 	public static void deleteQuestion(long id){
 		find.byId(id).delete();
 	}
+	
+	public static List<Question> getQuestionPage(int page,int size){
+		return find.findPagingList(size).getPage(page).getList();
+	}
 
 		
 }

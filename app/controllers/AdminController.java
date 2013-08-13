@@ -7,6 +7,8 @@ import models.Admin;
 import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.index;
+import views.html.*;
 
 public class AdminController extends Controller {
 
@@ -16,12 +18,16 @@ public class AdminController extends Controller {
 		String username = map.get("username");
 		String password = map.get("password");
 		if (Admin.login(username, password)) {
-			// TODO 跳转Admin页面
 			session().put("username", username);
-			return ok();
+			return ok(index.render(""));
 		}
 		// TODO 跳转login页面
-		return ok();
+		return ok(login.render());
+	}
+	
+	public static Result logout(){
+		session().clear();
+		return ok(login.render());
 	}
 	
 }

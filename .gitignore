@@ -1,0 +1,24 @@
+logs
+project/project
+project/target
+target
+tmp
+.history
+dist
+/.idea
+/*.iml
+/out
+/.idea_modules
+/.classpath
+/.project
+/RUNNING_PID
+/.settings
+.DS_Store
+<<<<<<< HEAD
+.target/*
+.target
+public/upload/*
+Template/.idea
+=======
+.target
+>>>>>>> f68a98b0cf06c2f20a043c1400f341be8c738303

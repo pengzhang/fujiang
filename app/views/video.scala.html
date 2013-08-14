@@ -1,0 +1,61 @@
+@(v:models.Video)
+@import utils.AppConfig
+@head={
+<script>
+function getFlashMovieObject(movieName)
+{
+  if (window.document[movieName])
+  {
+      return window.document[movieName];
+  }
+  if (navigator.appName.indexOf("Microsoft Internet")==-1)
+  {
+    if (document.embeds && document.embeds[movieName])
+      return document.embeds[movieName];
+  }
+  else // if (navigator.appName.indexOf("Microsoft Internet")!=-1)
+  {
+    return document.getElementById(movieName);
+  }
+}
+
+$(document).ready(function() {
+	$("#play").click(function() {
+		getFlashMovieObject("simplemovie.swf").play();
+	}
+	$("#stop").click(function() {
+		getFlashMovieObject("simplemovie.swf").stop();
+	}
+}
+
+</script>
+} 
+@main("视频展示",head){
+<!-- Example row of columns -->
+<div class="row-fluid">
+	<div class="span12  sider">
+		<div class="span8 offset2">
+			<h2>@v.vtitle</h2>
+			<p>@v.vdesc</p>
+			<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+            			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+            			WIDTH="150" HEIGHT="75" id="simplemovie" ALIGN="">
+        		<PARAM NAME=movie VALUE="simplemovie.swf">
+        		<PARAM NAME=quality VALUE=medium>
+        		<PARAM NAME=bgcolor VALUE=#FFFFFF>
+        		<EMBED src="@AppConfig.SystemUrl@v.vurl"
+               		quality=medium
+               		swliveconnect="true"
+               		bgcolor=#FFFFFF WIDTH="150" HEIGHT="75"
+               		name="simplemovie"
+               		ALIGN=""
+               		TYPE="application/x-shockwave-flash"
+               		PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
+        		</EMBED>
+   			</OBJECT>
+   			<button class="btn btn-info" id="play">play</button>
+   			<button class="btn btn-danger" id="stop">stop</button>
+		</div>
+	</div>
+</div>
+}

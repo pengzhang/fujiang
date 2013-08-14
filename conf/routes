@@ -1,0 +1,49 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+GET		/login						controllers.Application.login()
+GET		/admin						controllers.Application.login()
+GET		/video						controllers.Application.video()
+GET		/image						controllers.Application.image()
+GET		/question					controllers.Application.question()
+GET 	/message					controllers.Application.message()
+GET		/success					controllers.Application.success()
+
+POST	/login						controllers.AdminController.login()
+GET		/logout						controllers.AdminController.logout()
+
+GET		/video/get/:id/:act			controllers.VideoController.get_video(id:Long,act:String)
+GET		/video/upload				controllers.VideoController.upload_video()
+POST	/video/create				controllers.VideoController.create_video()
+GET		/video/del/:id				controllers.VideoController.del_video(id:Long)
+POST	/video/update				controllers.VideoController.update_video()
+GET		/video/status/:id			controllers.VideoController.status_video(id:Long)
+GET		/video/list					controllers.VideoController.list_video()
+
+GET		/image/get/:id/:act			controllers.ImageController.get_image(id:Long,act:String)
+GET		/image/upload				controllers.ImageController.upload_image()
+POST	/image/create				controllers.ImageController.create_image()
+GET		/image/del/:id				controllers.ImageController.del_image(id:Long)
+POST	/image/update				controllers.ImageController.update_image()
+GET		/image/list					controllers.ImageController.list_image()
+
+GET		/question/get/:id/:act		controllers.QuestionController.get_question(id:Long,act:String)
+GET		/question/upload			controllers.QuestionController.upload_question()
+POST	/question/create			controllers.QuestionController.create_question()
+GET		/question/del/:id			controllers.QuestionController.del_question(id:Long)
+POST	/question/update			controllers.QuestionController.update_question()
+GET		/question/list				controllers.QuestionController.list_question()
+GET		/question/page/:page/:size	controllers.QuestionController.page_question(page:Int,size:Int)
+
+GET		/message/get/:id			controllers.MessageController.get_message(id:Long)
+POST	/message/create				controllers.MessageController.create_message()
+GET		/message/del/:id			controllers.MessageController.del_message(id:Long)
+GET		/message/status/:id			controllers.MessageController.status_message(id:Long)
+GET		/message/list				controllers.MessageController.list_message()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,0 +1,35 @@
+@head={
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#upload-btn").click(function() {
+			var vtitle = $("#vtitle").val();
+			var vdesc = $("#vdesc").val();
+			var video = $("#video").val();
+			if (vtitle == "") {
+				alert_info("请填写视频标题");
+				return false;
+			} else if (vdesc == "") {
+				alert_info("请填写视频描述");
+				return false;
+			} else if (video == "") {
+				alert_info("请上传视频文件");
+				return false;
+			}
+		});
+	})
+</script>
+} 
+@admin("上传视频",head){
+<div class="row-fluid">
+	<div class="span12  sider">
+		<form class="form-signin max-width300" enctype="multipart/form-data" action="/video/create" method="post">
+			<h2 class="form-signin-heading">上传视频</h2>
+			<div id="alert" class="alert" style="display: none;"></div>
+			<input type="text" class="input-block-level" id="vtitle" name="vtitle" placeholder="视频标题"> 
+			<input type="text" class="input-block-level" id="vdesc" name="vdesc" placeholder="视频描述"> 
+			选择上传的视频:<input type="file" style="margin-bottom: 10px;" id="video" name="video">
+			<button class="btn btn-large btn-primary" id="upload-btn" type="submit">上传</button>
+		</form>
+	</div>
+</div>
+}

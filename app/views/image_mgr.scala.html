@@ -1,0 +1,48 @@
+@(il:List[models.Image])
+@import utils.AppConfig
+@head={
+<script>
+ 		function prev(currentPage) {
+  		  $('#currentPage').val(currentPage - 1);
+  		}
+
+  		function next(currentPage) {
+  		  $('#currentPage').val(currentPage + 1);
+  		}
+
+  		function current(currentPage) {
+  		  $('#currentPage').val(currentPage);
+  		}
+</script>
+}
+@admin("留言板管理",head){
+<!-- Example row of columns -->
+    <div class="row-fluid">
+        <div class="span12  sider">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>标题</th>
+                    <th>图片链接</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for(img <- il){
+                <tr>
+                    <td>*</td>
+                    <td>@img.ititle</td>
+                    <td>
+                    	<img class="img-polaroid img-small" src="@AppConfig.SystemUrl@img.iurl" >
+                    </td>
+                    <td>
+                        <a class="btn btn-mini btn-danger" href="/image/del/@img.id">删除</a>
+                    </td>
+                </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

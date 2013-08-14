@@ -1,0 +1,36 @@
+@(vl:List[models.Video])
+@head={}
+@admin("留言板管理",head){
+<!-- Example row of columns -->
+    <div class="row-fluid">
+        <div class="span12  sider">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>视频标题</th>
+                    <th>视频描述</th>
+                    <th>视频地址</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for(v <- vl){
+                <tr>
+                    <td>*</td>
+                    <td>@v.vtitle</td>
+                    <td>@v.vdesc</td>
+                    <td>@v.vurl</td>
+                    <td>
+                    	@if(!v.status){
+                    	<a class="btn btn-mini btn-info" href="/video/status/@v.id">设置为主要</a>
+                    	}
+                        <a class="btn btn-mini btn-danger" href="/video/del/@v.id">删除</a>
+                    </td>
+                </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

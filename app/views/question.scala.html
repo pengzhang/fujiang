@@ -1,0 +1,64 @@
+@(ql:List[models.Question],pg:models.Page)
+@head={
+<script type="text/javascript">
+	function nextQ(right,p,flag) {
+		var option = checkRadio();
+		if(option == undefined ||option == ""){
+			alert_info("请选择一个答案");
+			return false;
+		} else if(option != right){
+			alert_info("正确答案 : "+ right);
+			return false;
+		}
+		if(flag == 'n'){
+			window.location.href="/question/page/"+p+"/1";
+		}else{
+			window.location.href="/success";
+		}
+		
+	}
+	function checkRadio(){
+		var temp=document.getElementsByName("qoption");
+		  for (i=0;i<temp.length;i++){
+		    if(temp[i].checked){
+		      	return temp[i].value;
+		      }
+		  }
+	}
+</script>
+}
+@main("在线答题",head){
+<!-- Example row of columns -->
+<div class="row-fluid">
+	<div class="span12 sider">
+			<div class="span8 offset2 sider">
+				@for(q <- ql){
+				<table class="table">
+					<caption>
+						<h2 class="muted">第@(pg.currentPage+1)题</h2>
+					</caption>
+					<tr>
+						<td colspan="8"><h3 class="text-warning">@q.qtitle</h3></td>
+					</tr>
+					<tr>
+						<td><input type="radio" name="qoption" value="A"> A @q.qoptionA</td>
+						<td><input type="radio" name="qoption" value="B"> B @q.qoptionB</td>
+						<td><input type="radio" name="qoption" value="C"> C @q.qoptionC</td>
+						<td><input type="radio" name="qoption" value="D"> D @q.qoptionD</td>
+					</tr>
+					<tr>
+						<td colspan="4"><div id="alert" class="alert" style="display: none;" ></div></td>
+					</tr>
+				</table>
+				<div class="text-center">
+					@if(pg.currentPage == pg.totalPage-1){
+					<button class="btn btn-large btn-primary" onclick="nextQ('@q.right','@(pg.currentPage+1)','s')">提交</button>
+					}else{
+					<button class="btn btn-large btn-primary" id="next-btn" onclick="nextQ('@q.right','@(pg.currentPage+1)','n')" >下一题</button>
+					}
+				</div>
+				}
+			</div>
+	</div>
+</div>
+}

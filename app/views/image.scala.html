@@ -1,0 +1,28 @@
+@(il:List[models.Image])
+@head={}
+@main("图片欣赏",head){
+<!-- Example row of columns -->
+<div class="row-fluid">
+	<div class="span12  sider">
+		<div class="span10 offset1">
+		  @for(i <- 0 to il.size()-1){
+			@if(i==0 || i%4==0){
+			<div class="span12" style="margin-left: 0">
+			}
+				<div class="span3">
+					<div class="span">
+						<a href="@il.get(i).iurl"> <img src="@il.get(i).iurl" class="img-polaroid img-show">
+						</a>
+					</div>
+					<div class="span8 offset2">
+						<a href="@il.get(i).iurl">@il.get(i).ititle</a>
+					</div>
+				</div>
+			@if(i==3||(i+1)%4==0){	
+			</div>
+			}
+		  }
+		</div>
+	</div>
+</div>
+}
